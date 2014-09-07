@@ -211,7 +211,7 @@ object SbtIdeaPlugin extends Plugin {
     val testDirectories: Directories = appendExtraTestDirectories(directoriesFor(Configurations.Test))
     val librariesExtractor = new SbtIdeaModuleMapping.LibrariesExtractor(buildStruct, state, projectRef, scalaInstance,
       withClassifiers = if (args.contains(NoClassifiers)) None else {
-        Some((settings.setting(ideaSourcesClassifiers, "Missing idea-sources-classifiers"), settings.setting(ideaJavadocsClassifiers, "Missing idea-javadocs-classifiers")))
+        Some((settings.settingWithDefault(ideaSourcesClassifiers, Seq("sources")), settings.settingWithDefault(ideaJavadocsClassifiers, Seq("javadoc"))))
       }
     )
     val basePackage = settings.setting(ideaBasePackage, "missing IDEA base package")
