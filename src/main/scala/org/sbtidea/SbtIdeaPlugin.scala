@@ -203,7 +203,7 @@ object SbtIdeaPlugin extends Plugin {
     val compileDirectories: Directories = directoriesFor(Configurations.Compile)
 
     def appendExtraTestDirectories(directories: Directories) = {
-      val extraConfigurations = (Seq(Configurations.IntegrationTest) ++ settings.setting(ideaExtraTestConfigurations, "Missing extra test configuration"))
+      val extraConfigurations = (Seq(Configurations.IntegrationTest) ++ settings.settingWithDefault(ideaExtraTestConfigurations, Seq()))
       extraConfigurations.foldLeft(directories)((dirs,conf) =>
         dirs.addSrc(sourceDirectoriesFor(conf)).addRes(resourceDirectoriesFor(conf))
       )
