@@ -9,7 +9,7 @@ object SbtIdeaBuild extends Build with BuildExtra {
     organization := "com.github.mpeltonen",
     name := "sbt-idea",
     version := "1.7.0-SNAPSHOT",
-    sbtVersion in Global := "0.13.2",
+    sbtVersion in Global := "0.13.5",
     scalaVersion in Global := "2.10.3",
     publishTo <<= version { (v: String) =>
       val nexus = "https://oss.sonatype.org/"
