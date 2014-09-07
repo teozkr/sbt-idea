@@ -214,8 +214,8 @@ object SbtIdeaPlugin extends Plugin {
         Some((settings.settingWithDefault(ideaSourcesClassifiers, Seq("sources")), settings.settingWithDefault(ideaJavadocsClassifiers, Seq("javadoc"))))
       }
     )
-    val basePackage = settings.setting(ideaBasePackage, "missing IDEA base package")
-    val packagePrefix = settings.setting(ideaPackagePrefix, "missing package prefix")
+    val basePackage = settings.optionalSetting(ideaBasePackage).flatten
+    val packagePrefix = settings.optionalSetting(ideaPackagePrefix).flatten
     val extraFacets = settings.settingWithDefault(ideaExtraFacets, NodeSeq.Empty)
     val includeScalaFacet = settings.settingWithDefault(ideaIncludeScalaFacet, true)
     def isAggregate(p: String) = allProjectIds(p)
